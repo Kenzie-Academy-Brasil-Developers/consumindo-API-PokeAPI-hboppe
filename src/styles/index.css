@@ -56,6 +56,10 @@ p#loading {
     margin-top: 11.375rem;
 }
 
+p.hidden {
+    display: none;
+}
+
 .pokemonsList__container {
     width: 90vw;
 }

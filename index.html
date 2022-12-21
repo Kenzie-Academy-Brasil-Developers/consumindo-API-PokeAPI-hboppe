@@ -4,9 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Consumindo PokeAPI</title>
+    <link rel="stylesheet" href="/src/styles/globalStyles.css">
+    <link rel="stylesheet" href="/src/styles/index.css">
+    <title>Consuming PokeAPI</title>
+    <link rel="shortcut icon" href="/src/assets/favicon.ico" type="image/x-icon">
   </head>
 
-  <body></body>
+  <body>
+    <header>
+      <img id="pokeApiLogo" src="/src/assets/pokeapi.png" alt="PokeApi logo">
+
+      <nav>
+        <input type="text">
+        <button><img src="/src/assets/search-icon.png" alt="Search image"></button>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Pokemon List</h1>
+      <p class="loading">Loading...</p>
+      <ul id="pokemonsList"></ul>
+    </main>
+  </body>
 </html>

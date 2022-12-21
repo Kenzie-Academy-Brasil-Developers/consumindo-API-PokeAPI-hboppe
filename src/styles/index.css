@@ -4,7 +4,7 @@ body {
 }
 
 header {
-    padding: 2.063rem 0;
+    padding: 2.063rem 0 2.313rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,14 +38,38 @@ header {
     cursor: pointer;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 h1#mainTitle {
     color: var(--color-grey-6);
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 p#loading {
     color: var(--color-grey-4);
     font-size: 1.25rem;
+    margin-top: 11.375rem;
 }
+
+.pokemonsList__container {
+    width: 90vw;
+}
+
+.pokemonsList__container > li {
+    background-color: var(--color-grey-2);
+    margin: 1.75rem 1.25rem;
+    color: var(--color-grey-5);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 8px;
+    gap: .75rem;
+    
+}
+
 

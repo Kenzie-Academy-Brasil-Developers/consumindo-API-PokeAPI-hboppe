@@ -23,7 +23,9 @@ export function searchPokemon(){
     const input = document.querySelector('.nav__container > input');
 
     const pokemonName = searchButton.addEventListener('click', (event) => {
-
+        if(input.value == ''){
+            return;
+        }
         return getPokemonByName(input.value)
        
     });

@@ -80,19 +80,6 @@ export function cleanPokemonList(){
     pokemonList.innerHTML = '';
 }
 
-function scrollendLoad(){
-    const element = document.querySelector("body");
-    const output = document.querySelector("main");
-
-    window.addEventListener("scroll", (event) => {
-        console.log(document.documentElement.scrollTop)
-        console.log(window.innerHeight)
-        console.log(`body height`, document.body.scrollHeight)
-
-    });
-
-}
-
 export async function scrollAndLoad(){
         
     window.addEventListener('scroll', () => {
@@ -107,12 +94,27 @@ export async function scrollAndLoad(){
 
 async function checkScroll(){
 
+    if(!baseNextRequest){
+        const warning = document.getElementById('warning');
+
+        if(!warning){
+            const main = document.querySelector('main'); 
+            
+            main.insertAdjacentHTML('beforeend', `
+            
+            <p id="warning">All pokemons are above.</p>
+            `)
+            return;
+            
+        }
+        return;
+    }
+
     const newBaseNexRequest = await loadMorePokemons(baseNextRequest);
 
     baseNextRequest = newBaseNexRequest; //change value of baseNexresquest;
 
     return baseNextRequest
-
 
 }
 
@@ -136,4 +138,3 @@ export function render20MorePokemons(pokemonsArray){
 scrollAndLoad()
 searchPokemon()
 cleanInput()
-scrollendLoad()

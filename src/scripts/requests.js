@@ -45,8 +45,6 @@ export async function loadMorePokemons(baseURL){
 
     const totalPokemons = baseURL.slice(41, -9);
     
-    console.log(totalPokemons)
-
     const next20Pokemons = await fetch(baseURL, {
         method: 'GET',
         headers: {
@@ -58,23 +56,6 @@ export async function loadMorePokemons(baseURL){
         const {count, next, results} = data;
 
         let nextBaseUrl = next;
-
-        if(!nextBaseUrl){
-            const warning = document.getElementById('warning');
-
-            if(!warning){
-                const main = document.querySelector('main'); 
-                
-                main.insertAdjacentHTML('beforeend', `
-                
-                <p id="warning">All pokemons are above.</p>
-                `)
-                return;
-                
-            }
-        }
-
-        console.log(`LoadmorePokemons nextbase:`, nextBaseUrl)
 
         render20MorePokemons(results);
 

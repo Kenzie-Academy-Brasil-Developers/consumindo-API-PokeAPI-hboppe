@@ -26,13 +26,13 @@ export function searchPokemon(){
         if(input.value == ''){
             return;
         }
-        return getPokemonByName(input.value)
+        return getPokemonByName(input.value.toLowerCase().trim())
        
     });
 
     input.addEventListener('keydown', (event) => {
         if(event.key === 'Enter'){
-            return getPokemonByName(input.value);
+            return getPokemonByName(input.value.toLowerCase().trim());
         }
 
     })

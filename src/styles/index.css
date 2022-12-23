@@ -92,6 +92,12 @@ p.hidden {
     min-width: 300px;
 }
 
+p#warning {
+    color: var(--color-grey-5);
+    font-size: 1.5rem;
+    margin: 2rem;
+}
+
 @media (min-width: 992px) {
     body {
 

@@ -1,4 +1,5 @@
-import {renderAllPokemons, searchPokemon, renderPokemonSearched, cleanPokemonList} from './index.js'
+import {renderAllPokemons, searchPokemon, renderPokemonSearched, cleanPokemonList, scrollAndLoad, render20MorePokemons} from './index.js'
+
 
 export async function getAllPokemons() {
 
@@ -11,6 +12,10 @@ export async function getAllPokemons() {
     .then((resp) => resp.json())
     .then((resp) => {
         renderAllPokemons(resp.results)
+
+        let nextBaseUrl = resp.next;
+
+        return nextBaseUrl;
     })
 
     loading.classList.add('hidden')
@@ -35,6 +40,51 @@ export async function getPokemonByName(pokemonName){
 
     return pokemon;
 };
+
+export async function loadMorePokemons(baseURL){
+
+    const totalPokemons = baseURL.slice(41, -9);
+    
+    console.log(totalPokemons)
+
+    const next20Pokemons = await fetch(baseURL, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+    .then(res => res.json())
+    .then((data) => {
+        const {count, next, results} = data;
+
+        let nextBaseUrl = next;
+
+        if(!nextBaseUrl){
+            const warning = document.getElementById('warning');
+
+            if(!warning){
+                const main = document.querySelector('main'); 
+                
+                main.insertAdjacentHTML('beforeend', `
+                
+                <p id="warning">All pokemons are above.</p>
+                `)
+                return;
+                
+            }
+        }
+
+        console.log(`LoadmorePokemons nextbase:`, nextBaseUrl)
+
+        render20MorePokemons(results);
+
+        return nextBaseUrl;
+   
+    })
+
+    return next20Pokemons;
+}
+
 
 getAllPokemons()
 

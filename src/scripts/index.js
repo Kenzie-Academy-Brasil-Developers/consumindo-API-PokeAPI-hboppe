@@ -78,5 +78,19 @@ export function cleanPokemonList(){
     pokemonList.innerHTML = '';
 }
 
+function scrollendLoad(){
+    const element = document.querySelector("body");
+    const output = document.querySelector("main");
+
+    window.addEventListener("scroll", (event) => {
+        console.log(document.documentElement.scrollTop)
+        console.log(window.innerHeight)
+        console.log(`body height`, document.body.scrollHeight)
+
+    });
+
+}
+
 searchPokemon()
 cleanInput()
+scrollendLoad()

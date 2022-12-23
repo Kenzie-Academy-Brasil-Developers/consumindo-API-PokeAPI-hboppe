@@ -59,6 +59,8 @@ h1#mainTitle {
     color: var(--color-grey-6);
     font-size: 1.5rem;
     font-weight: 500;
+    padding-bottom: 4.625rem;
+
 }
 
 p#loading {
@@ -80,7 +82,7 @@ p.hidden {
 
 .pokemonsList__container > li {
     background-color: var(--color-grey-2);
-    margin: 1.75rem 1.25rem;
+    margin: 0 1.25rem 1.75rem;
     color: var(--color-grey-5);
     display: flex;
     align-items: center;
@@ -99,9 +101,7 @@ p#warning {
 }
 
 @media (min-width: 992px) {
-    body {
-
-    }
+    
     header {
         flex-direction: row;
         max-width: 800px;
@@ -124,7 +124,6 @@ p#warning {
     }
 
     h1#mainTitle {
-        padding-bottom: 4.625rem;
 
     }
 

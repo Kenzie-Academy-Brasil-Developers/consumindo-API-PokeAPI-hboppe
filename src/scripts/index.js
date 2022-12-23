@@ -28,13 +28,13 @@ export function searchPokemon(){
         if(input.value == ''){
             return;
         }
-        return getPokemonByName(input.value)
+        return getPokemonByName(input.value.toLowerCase().trim())
        
     });
 
     input.addEventListener('keydown', (event) => {
         if(event.key === 'Enter'){
-            return getPokemonByName(input.value);
+            return getPokemonByName(input.value.toLowerCase().trim());
         }
 
     })
@@ -80,6 +80,19 @@ export function cleanPokemonList(){
     pokemonList.innerHTML = '';
 }
 
+function scrollendLoad(){
+    const element = document.querySelector("body");
+    const output = document.querySelector("main");
+
+    window.addEventListener("scroll", (event) => {
+        console.log(document.documentElement.scrollTop)
+        console.log(window.innerHeight)
+        console.log(`body height`, document.body.scrollHeight)
+
+    });
+
+}
+
 export async function scrollAndLoad(){
         
     window.addEventListener('scroll', () => {
@@ -123,3 +136,4 @@ export function render20MorePokemons(pokemonsArray){
 scrollAndLoad()
 searchPokemon()
 cleanInput()
+scrollendLoad()

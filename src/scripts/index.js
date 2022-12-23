@@ -143,8 +143,18 @@ export function render20MorePokemons(pokemonsArray){
     
 }
 
+function logoReload(){
+    const logo = document.querySelector('#pokeApiLogo');
+    const input = document.querySelector('.nav__container > input');
 
+    logo.addEventListener('click', () => {
+        input.value = '';
+        return getAllPokemons();
+        
+    })
+}
 
 scrollAndLoad()
 searchPokemon()
 cleanInput()
+logoReload()

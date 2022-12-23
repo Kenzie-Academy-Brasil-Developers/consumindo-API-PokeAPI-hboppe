@@ -25,9 +25,11 @@ export async function getAllPokemons() {
 
 
 export async function getPokemonByName(pokemonName){
+
+    cleanPokemonList()
+    
     const loading = document.querySelector('#loading');
-    const pokemonlist = document.querySelector('.pokemonsList__container');
-    pokemonlist.innerHTML = '';
+    
     loading.classList.remove('hidden');
     
     const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}/`)

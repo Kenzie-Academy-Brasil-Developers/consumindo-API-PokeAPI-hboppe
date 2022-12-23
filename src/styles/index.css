@@ -11,6 +11,10 @@ header {
     gap: 2.313rem;
 }
 
+header > img {
+    cursor: pointer;
+}
+
 .nav__container{
     display: flex;
     flex-direction: row;

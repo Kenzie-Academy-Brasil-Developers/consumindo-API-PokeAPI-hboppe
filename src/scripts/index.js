@@ -22,26 +22,29 @@ export function renderAllPokemons(pokemonsArray){
 
 export function searchPokemon(){
     const searchButton = document.querySelector('.nav__container > button');
-    const input = document.querySelector('.nav__container > input');
+
+    const input = document.querySelector('input');
 
     const pokemonName = searchButton.addEventListener('click', (event) => {
-        if(input.value == ''){
+        const inputValue = input.value.trim().toLowerCase();
+
+        if(inputValue === ''){
             return;
-        }
-        return getPokemonByName(input.value.toLowerCase().trim())
-       
+        } 
+        return getPokemonByName(inputValue);
+               
     });
 
     input.addEventListener('keydown', (event) => {
+        const inputValue = input.value.trim().toLowerCase();
+
         if(event.key === 'Enter'){
-            return getPokemonByName(input.value.toLowerCase().trim());
+            return getPokemonByName(inputValue);
         }
 
     })
 
 }
-
-
 
 export function renderPokemonSearched({name, url}){
 
@@ -65,9 +68,15 @@ export function renderPokemonSearched({name, url}){
 
 function cleanInput(){
     const input = document.querySelector('.nav__container > input');
+    
 
     input.addEventListener('input', (event) => {
+        const warning = document.getElementById('warning');
+
         if(event.target.value ==''){
+            if(warning){
+                warning.remove();
+            }
             return getAllPokemons();
         }
     })
@@ -133,6 +142,7 @@ export function render20MorePokemons(pokemonsArray){
     })
     
 }
+
 
 
 scrollAndLoad()

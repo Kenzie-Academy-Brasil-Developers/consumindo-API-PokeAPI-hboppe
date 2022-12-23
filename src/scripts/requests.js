@@ -1,4 +1,4 @@
-import {renderAllPokemons, searchPokemon, renderPokemonSearched, cleanPokemonList, scrollAndLoad, render20MorePokemons} from './index.js'
+import {renderAllPokemons, renderPokemonSearched, cleanPokemonList,  render20MorePokemons, searchPokemon} from './index.js'
 
 
 export async function getAllPokemons() {
@@ -26,8 +26,10 @@ export async function getAllPokemons() {
 
 export async function getPokemonByName(pokemonName){
     const loading = document.querySelector('#loading');
+    const pokemonlist = document.querySelector('.pokemonsList__container');
+    pokemonlist.innerHTML = '';
     loading.classList.remove('hidden');
-
+    
     const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}/`)
     .then((res) => res.json())
     .then((res) => {
@@ -36,7 +38,30 @@ export async function getPokemonByName(pokemonName){
         renderPokemonSearched(res.forms[0])
         return res;
     })
-    .catch((err) => console.log(`er2ro ${err}`))
+    .catch((err) => {
+        const warning = document.getElementById('warning');
+
+        if (warning){
+            cleanPokemonList()
+            loading.classList.add('hidden');
+
+            return;
+        }
+        else if(!warning){
+
+            cleanPokemonList()
+            const main = document.querySelector('main'); 
+            loading.classList.add('hidden');
+            
+            main.insertAdjacentHTML('beforeend', `
+            
+            <p id="warning">Pokemon not found. Please try again.</p>
+            `)
+            return;
+            
+        } 
+        return;
+    })
 
     return pokemon;
 };

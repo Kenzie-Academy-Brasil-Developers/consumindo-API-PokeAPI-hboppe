@@ -49,11 +49,8 @@ export function searchPokemon(){
 export function renderPokemonSearched({name, url}){
 
     cleanPokemonList();
-    console.log({name, url})
 
     const pokemonList = document.querySelector('.pokemonsList__container');
-
-    console.log(name, url)
 
     pokemonList.insertAdjacentHTML('beforeend', `
         <li data-id=${url.slice(38, -1)}>

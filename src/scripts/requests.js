@@ -36,7 +36,6 @@ export async function getPokemonByName(pokemonName){
     .then((res) => res.json())
     .then((res) => {
         loading.classList.add('hidden');
-        console.log(res.forms)
         renderPokemonSearched(res.forms[0])
         return res;
     })
